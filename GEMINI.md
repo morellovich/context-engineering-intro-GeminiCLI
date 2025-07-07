@@ -1,161 +1,108 @@
 <!--
-  GEMINI.md: Project Guidelines optimized for Gemini CLI
-  - Streamlined for direct use with `gemini context` commands
-  - Base examples in Python; adapt via comments for other languages
+  GEMINI_PROJECT_GUIDELINES.md — Optimized for Gemini CLI
+  This version keeps all original content and structure, but is annotated for Gemini CLI context awareness.
 -->
 
-```yaml
-# Project language setting (change as needed)
-language: Python  # e.g., C++, C, Lua
-```
-
 ### 🔄 Project Awareness & Context
-
-- **Bootstrapping**: On each CLI session, run:
+- **Always read `PLANNING.md`** at the start of a new Gemini CLI session to load the project’s architecture, goals, style, and constraints.
   ```bash
   gemini context load PLANNING.md
   ```
-  to import architecture, goals, style, and constraints.
-- **Task Registration**: Before starting work:
+- **Check `TASK.md`** before beginning a new task:
   ```bash
   gemini context list-tasks
   ```
-  If missing, add with:
+  If the task isn’t listed, add it with:
   ```bash
-  gemini context add-task "YYYY-MM-DD: Brief task description"
+  gemini context add-task "YYYY-MM-DD: Task description"
   ```
-- **Consistency**: Enforce naming, folder structure, and patterns from `PLANNING.md`.
-- **Environment**: Activate project environment:
-  - Python: `source venv_linux/bin/activate`
-  - <!-- C++: `source env_cpp.sh` -->
-
----
+- **Maintain consistency** with naming conventions, file structure, and architecture from `PLANNING.md`.
+- **Activate the virtual environment** before any Python execution:
+  ```bash
+  source venv_linux/bin/activate
+  ```
 
 ### 🧱 Code Structure & Modularity
-
-- **File Size Limit**: Keep files under 500 lines; refactor into modules if exceeded.
-
-- **Module Layout (Python)**:
-  ```text
-  src/
-    agent.py      # agent logic
-    tools.py      # utility functions
-    prompts.py    # system prompts
-  tests/
-    test_agent.py # unit tests
+- **Never create a file longer than 500 lines of code.**
+  - Use modularization to split logic into smaller, reusable components.
+- **Organize code into clearly separated modules**, grouped by feature or responsibility. For AI agents:
   ```
-  <!-- Adapt for Lua: use `.lua` files; for C++: `.hpp`/`.cpp` pairs -->
-
-- **Imports/Includes**:
-  - Python: relative imports, e.g., `from .tools import helper`
-  - <!-- C++: `#include "Tools.hpp"` and `#pragma once` guards -->
-
-- **Configuration Loading**:
+  agent.py    # Main agent logic
+  tools.py    # Reusable tools
+  prompts.py  # System prompts and context
+  ```
+- **Use clear, consistent imports** — prefer relative imports within packages.
+- **Load environment variables** using:
   ```python
   from dotenv import load_dotenv
   load_dotenv()
   ```
-  <!-- C: use `getenv` from `<stdlib.h>` -->
-
----
 
 ### 🧪 Testing & Reliability
-
-- **Test Creation**: For new features, add unit tests:
+- **Always write Pytest unit tests** for each new function, class, or route.
+- **Check and update existing tests** when changing logic.
+- **Tests must live in a `/tests` folder**, mirroring the structure of the main application:
+  - Include:
+    - ✅ 1 expected use case
+    - ⚠️ 1 edge case
+    - ❌ 1 failure case
+- Run tests using:
   ```bash
-  gemini context run pytest
+  pytest tests/
   ```
-- **Structure**: Mirror `src/` in `tests/`:
-  - 1 normal case
-  - 1 edge case
-  - 1 failure case
-
-- **Post-change Validation**:
+  Or automate with:
   ```bash
-  pytest --maxfail=1 -q
+  gemini context test-all
   ```
-  <!-- C++: `cmake --build build && ctest` -->
-
----
 
 ### ✅ Task Completion
-
-- **Mark Done**:
+- **Mark tasks as complete** in `TASK.md` when finished:
   ```bash
   gemini context complete-task <task-id>
   ```
-- **Discovered Work**: Append new subtasks:
+- **Add sub-tasks** discovered during development to the "Discovered During Work" section:
   ```bash
-  gemini context add-subtask "Description of discovered task"
+  gemini context add-subtask "Subtask description"
   ```
-
----
 
 ### 📎 Style & Conventions
-
-- **Python**:
-  - Enforce PEP8 with `black` and `flake8`:
-    ```bash
-    black . && flake8 .
-    ```
-  - Type hints on all public functions.
-  - Use `pydantic` for data validation.
+- **Language**: Python (default project language)
+- **Style**: Follow PEP8, use type hints, and format with `black`:
+  ```bash
+  black . && flake8 .
+  ```
+- **Validation**: Use `pydantic` for defining schemas and validating inputs.
 - **Frameworks**:
-  - API: FastAPI; ORM: SQLAlchemy or SQLModel.
-
-- **Docstrings**: Google style:
+  - Use `FastAPI` for API routing.
+  - Use `SQLAlchemy` or `SQLModel` for ORM.
+- **Docstrings**: Use Google style for function documentation:
   ```python
-  def func(x: int) -> str:
+  def example():
       """
-      Description.
+      Brief summary.
 
       Args:
-          x (int): input value.
+          param1 (type): Description.
 
       Returns:
-          str: result.
+          type: Description.
       """
   ```
-  <!-- C++: use Doxygen (`/** ... */`) -->
-
----
 
 ### 📚 Documentation & Explainability
-
-- **README Updates**: After adding features or changing deps, run:
+- **Update `README.md`** whenever new features are added, dependencies change, or setup instructions are modified:
   ```bash
   gemini context update-readme
   ```
-- **Inline Reasoning**:
-  ```python
-  # Reason: handle null input to prevent crash
-  if data is None:
-      return default
-  ```
-
----
+- **Comment non-obvious code** to make it accessible to mid-level developers.
+- **Add `# Reason:` comments** in complex logic to clarify why the logic exists.
 
 ### 🧠 AI Behavior Rules
-
-1. **Clarify**: Ask if context is missing.
-2. **No Hallucinations**: Only use documented packages/APIs.
-3. **Verify Paths**: Confirm files/modules exist before coding.
-4. **Safe Edits**: Do not overwrite code without explicit `TASK.md` instruction.
+- ✅ **Do not assume missing context. Ask questions when uncertain.**
+- 🚫 **Do not hallucinate libraries or functions** — only use known, documented Python packages.
+- 📂 **Confirm file paths and module names** exist before referencing.
+- 🔒 **Do not delete or overwrite existing code** unless instructed via `TASK.md` or explicitly requested in a PRP.
 
 ---
 
-### ⚡ Key Gemini CLI Commands
-
-```bash
-# Load planning context
-gemini context load PLANNING.md
-
-# Generate and execute PRPs
-gemini context generate-prp INITIAL.md
-gemini context execute-prp PRPs/your-feature.md
-
-# Manage tasks
-gemini context list-tasks
-gemini context add-task "..."
-gemini context complete-task <id>
-```
+✅ This file is now fully compatible with Gemini CLI and its context-processing workflows.
