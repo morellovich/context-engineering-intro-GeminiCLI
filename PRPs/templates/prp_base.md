@@ -4,7 +4,6 @@ version: 2
 type: prp
 author: Sathariels -- this is just and edited version of the template of coleam00 most credit goes to him. 
 date_created: 07/7/2025
-feature_name: [insert-a-feature-slug]
 description: |
   Template optimized for AI agents to implement features with sufficient context and self-validation capabilities to achieve working code through iterative refinement.
 ```
