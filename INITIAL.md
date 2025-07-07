@@ -1,15 +1,35 @@
-## FEATURE:
 
-[Insert your feature here]
+## FEATURE:
+<!--
+Describe the feature you want Gemini CLI to implement in a single, actionable sentence.
+Be precise: name flags, expected behavior, edge cases, and success criteria.
+Example:
+"Add a `--verbose` flag to the CLI that logs HTTP request/response details,
+redacting sensitive headers, and exits with code 0 on success or 1 on failure."
+-->
+[Insert your concise feature description here]
 
 ## EXAMPLES:
-
-[Provide and explain examples that you have in the `examples/` folder]
+<!--
+Reference code samples in the examples/ folder that illustrate patterns Gemini should follow.
+Include file paths and a brief note on what to emulate.
+-->
+- `examples/cli_pattern.py` — shows standard argparse setup and subcommand handling
+- `examples/error_handling.py` — demonstrates structured exception catching and exit codes
 
 ## DOCUMENTATION:
-
-[List out any documentation (web pages, sources for an MCP server like Crawl4AI RAG, etc.) that will need to be referenced during development]
+<!--
+List URLs or internal docs Gemini CLI may need for context.
+Include a one-line summary of each resource.
+-->
+- https://developers.google.com/ai/gemini/cli#commands — Official Gemini CLI reference
+- https://company.internal/rag/docs — Internal RAG server API documentation
 
 ## OTHER CONSIDERATIONS:
-
-[Any other considerations or specific requirements - great place to include gotchas that you see AI coding assistants miss with your projects a lot]
+<!--
+Mention special requirements, configuration, or common pitfalls.
+Examples: authentication, rate limits, environment variables, test fixtures, formatting constraints.
+-->
+- Ensure `API_TOKEN` is loaded from a `.env` file via python-dotenv
+- All CLI output must be valid JSON for downstream parsing
+- Tip: use pytest's `monkeypatch` to mock filesystem and network calls in CLI tests
