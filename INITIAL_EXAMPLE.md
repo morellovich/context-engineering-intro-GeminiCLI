@@ -4,6 +4,7 @@
   - References to examples/ folder with guidance on usage
   - Documentation link formatted with summary
   - Detailed other considerations with setup tips
+  - REMBER TO DELETE BEFORE RUNNING THE CLI
 -->
 
 ## FEATURE:
