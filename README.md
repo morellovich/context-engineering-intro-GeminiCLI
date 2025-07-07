@@ -16,7 +16,7 @@ A comprehensive template to jumpstart Context Engineering with Gemini CLI—ensu
 
 ```bash
 # 1. Clone this template
-git clone https://github.com/coleam00/context-engineering-intro.git
+git clone https://github.com/coleam00/context-engineering-intro-GeminiCLI.git
 cd context-engineering-intro
 
 # 2. Customize project guidelines (optional)
