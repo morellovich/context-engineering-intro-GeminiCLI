@@ -28,11 +28,12 @@ A CLI-based application where:
 - Results stream back to the user in real-time
 
 ### Success Criteria
-- [ ] Research Agent successfully searches via Brave API
-- [ ] Email Agent creates Gmail drafts with proper authentication
-- [ ] Research Agent can invoke Email Agent as a tool
-- [ ] CLI provides streaming responses with tool visibility
-- [ ] All tests pass and code meets quality standards
+  - Research Agent successfully searches via Brave API
+  - Email Agent creates Gmail drafts with proper authentication
+  - Research Agent can invoke Email Agent as a tool
+  - CLI provides streaming responses with tool visibility
+  - All tests pass and code meets quality standards
+
 
 ## All Needed Context
 
@@ -392,4 +393,10 @@ High confidence due to:
 - Established patterns for multi-agent systems
 - Comprehensive validation gates
 
-Minor uncertainty on Gmail OAuth first-time setup UX, but documentation provides clear guidance.
+📣 NOTE: On the first run, Gmail OAuth will prompt the user to authorize via a browser window. Ensure `credentials.json` is correctly placed in `./credentials/`.
+
+# Generate this PRP (if it was templated)
+gemini context generate-prp INITIAL.md
+
+# Execute this PRP
+gemini context execute-prp PRPs/multi_agent_research_email_system.md
