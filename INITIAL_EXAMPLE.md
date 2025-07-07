@@ -1,26 +1,40 @@
-## FEATURE:
+<!--
+  INITIAL_EXAMPLE.md optimized for Gemini CLI:
+  - Clear, user-friendly feature description with context
+  - References to examples/ folder with guidance on usage
+  - Documentation link formatted with summary
+  - Detailed other considerations with setup tips
+-->
 
-- Pydantic AI agent that has another Pydantic AI agent as a tool.
-- Research Agent for the primary agent and then an email draft Agent for the subagent.
-- CLI to interact with the agent.
-- Gmail for the email draft agent, Brave API for the research agent.
+## FEATURE:
+Define a Pydantic-based AI agent system with the following capabilities:
+
+- **Primary Agent (ResearchAgent):** Queries the Brave API to gather research data on user-specified topics.
+- **Secondary Agent (EmailDraftAgent):** Uses the output of ResearchAgent to generate a Gmail-compatible draft email.
+- **CLI Integration:** Provide commands to invoke each agent:
+  - `gemini context execute-agent ResearchAgent --query "<topic>"`
+  - `gemini context execute-agent EmailDraftAgent --template "<template_name>"`
+- **API Integrations:** Authenticate with Gmail API for sending drafts and Brave API for research calls, using environment variables loaded via python-dotenv.
 
 ## EXAMPLES:
+In the `examples/` folder, use these samples for inspiration (do **not** copy line-for-line):
 
-In the `examples/` folder, there is a README for you to read to understand what the example is all about and also how to structure your own README when you create documentation for the above feature.
-
-- `examples/cli.py` - use this as a template to create the CLI
-- `examples/agent/` - read through all of the files here to understand best practices for creating Pydantic AI agents that support different providers and LLMs, handling agent dependencies, and adding tools to the agent.
-
-Don't copy any of these examples directly, it is for a different project entirely. But use this as inspiration and for best practices.
+- `examples/cli.py` — Demonstrates how to parse arguments with `argparse` and structure subcommands for agent execution.
+- `examples/agent/` — Contains Pydantic agent definitions showing:
+  - Provider and LLM abstractions
+  - Tool registration on agents
+  - Dependency injection for agent-to-agent communication
 
 ## DOCUMENTATION:
-
-Pydantic AI documentation: https://ai.pydantic.dev/
+- **Pydantic AI Docs:** https://ai.pydantic.dev/ — Guides on defining Pydantic-based AI agents, tooling patterns, and model configuration.
 
 ## OTHER CONSIDERATIONS:
-
-- Include a .env.example, README with instructions for setup including how to configure Gmail and Brave.
-- Include the project structure in the README.
-- Virtual environment has already been set up with the necessary dependencies.
-- Use python_dotenv and load_env() for environment variables
+- **Environment Setup:**
+  - Include a `.env.example` listing variables: `GMAIL_API_KEY`, `BRAVE_API_KEY`, and any OAuth settings.
+  - Use `python-dotenv` with `load_env()` to load credentials.
+- **README Instructions:**
+  - Add a setup section explaining Gmail OAuth configuration and Brave API onboarding steps.
+  - Document project structure and how to run each `gemini context execute-agent` command.
+- **Testing Tips:**
+  - Mock API calls in tests using pytest’s `monkeypatch` to simulate Gmail and Brave responses.
+  - Ensure CLI outputs valid JSON for downstream parsers or logging systems.
