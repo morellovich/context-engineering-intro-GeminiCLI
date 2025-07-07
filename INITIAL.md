@@ -20,10 +20,7 @@ Include file paths and a brief note on what to emulate.
 
 
 ## DOCUMENTATION:
-<!--
-List URLs or internal docs Gemini CLI may need for context.
-Include a one-line summary of each resource.
--->
+
 - https://developers.google.com/ai/gemini/cli#commands — Official Gemini CLI reference
 - https://company.internal/rag/docs — Internal RAG server API documentation
 [Insert your documentation description here remember to remove all the text above]
