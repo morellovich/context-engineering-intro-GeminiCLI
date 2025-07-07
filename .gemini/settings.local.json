@@ -16,8 +16,14 @@
       "Bash(python:*)",
       "Bash(python -m pytest:*)",
       "Bash(python3 -m pytest:*)",
-      "WebFetch(domain:docs.anthropic.com)"
+      "Bash(env:*)",
+      "Bash(export:*)",
+      "Bash(cp:*)",
+      "Bash(rm:*)",
+      "Bash(pip install:*)",
+      "Bash(git:*)"
     ],
     "deny": []
-  }
+  },
+  "defaultTimeout": 20
 }
