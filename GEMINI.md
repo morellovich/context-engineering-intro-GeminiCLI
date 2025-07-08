@@ -104,5 +104,3 @@
 - 🔒 **Do not delete or overwrite existing code** unless instructed via `TASK.md` or explicitly requested in a PRP.
 
 ---
-
-✅ This file is now fully compatible with Gemini CLI and its context-processing workflows.
