@@ -88,6 +88,7 @@ context-engineering-intro/
 ├── GEMINI.md                   # Global project rules for Gemini CLI
 ├── INITIAL.md                  # Template for new feature requests
 ├── INITIAL_EXAMPLE.md          # Example feature request
+├── INITIAL_COMPLEX.md          # More comprehensive document for more complex projects
 └── README.md                   # This file (updated for Gemini CLI)
 ```  
 
