@@ -127,7 +127,7 @@ Describe your new feature:
 ```
 See `INITIAL_EXAMPLE.md` for guidance.
 
-Use INTIAL_COMPLEX.md for more complex feature
+Use INITIAL_COMPLEX.md for more complex feature
 ```markdown
 ## High-Level Objective
 [What are you building?]
