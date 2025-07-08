@@ -124,8 +124,38 @@ Describe your new feature:
 ## OTHER CONSIDERATIONS:
 [Auth, rate limits, gotchas]
 ```
-
 See `INITIAL_EXAMPLE.md` for guidance.
+
+Use INTIAL_COMPLEX.md for more complex feature
+```markdown
+## High-Level Objective
+[What are you building?]
+
+## Mid-Level Objectives
+[What are the steps to get there?]
+
+## Implementation Notes
+[Tech notes, dependencies, file structure, etc.]
+
+## Context
+- Beginning Context: [Which files exist?]
+- Ending Context: [What files will exist after?]
+
+## Low-Level Tasks
+1. [Detailed implementation steps]
+
+## EXAMPLES:
+[List example files and patterns]
+
+## DOCUMENTATION:
+[Links to API docs, schemas, guides]
+
+## OTHER CONSIDERATIONS:
+[Auth, rate limits, gotchas]
+
+Before running the CLI, rename INITIAL_COMPLEX.md to INITIAL.md so Gemini can use it.
+
+```
 
 ### 3. Generate the PRP
 
