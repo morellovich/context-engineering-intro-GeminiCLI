@@ -15,28 +15,39 @@ A comprehensive template to jumpstart Context Engineering with Gemini CLI—ensu
 ## 🚀 Quick Start
 
 ```bash
-# 1. Clone this template
-git clone https://github.com/coleam00/context-engineering-intro-GeminiCLI.git
-cd context-engineering-intro
+# 1. Install Gemini CLI
+npm install -g @google/gemini-cli
 
-# 2. Customize project guidelines (optional)
+# 2. Login to Gemini
+gemini auth login
+
+# 3. Clone this template
+
+git clone https://github.com/coleam00/context-engineering-intro-GeminiCLI.git
+cd context-engineering-intro-GeminiCLI
+
+# 4. Customize project guidelines (optional)
 # Edit GEMINI.md to add your project-specific conventions
 
-# 3. Add illustrative examples (highly recommended)
+# 5. Add illustrative examples (highly recommended)
 # Place relevant code samples in the examples/ folder
 
-# 4. Define your initial feature request
+# 6. Define your initial feature request
 # Edit INITIAL.md with detailed requirements
 
-# 5. Generate a comprehensive PRP (Product Requirements Prompt)
+# 7. Generate a comprehensive PRP (Product Requirements Prompt)
 # Using Gemini CLI, run:
 
 gemini context generate-prp INITIAL.md
+# OR
+gemini -p "@./.gemini/commands/generate-prp.md" "INITIAL.md"
 
-# 6. Execute the PRP to implement your feature
+# 8. Execute the PRP to implement your feature
 # Using Gemini CLI, run:
 
 gemini context execute-prp PRPs/your-feature-name.md
+# OR
+gemini -p "@./.gemini/commands/execute-prp.md" "PRPs/your-feature-name.md"
 ```  
 
 ## 📚 Table of Contents
